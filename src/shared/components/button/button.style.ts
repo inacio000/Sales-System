@@ -11,5 +11,5 @@ export const ContainerButton = styled.TouchableOpacity<ButtonProps>`
     justify-content: center;
     ${(props: { margin: string; }) => (props.margin ? `margin: ${props.margin};`: '')}
 
-    background-color: greenyellow;
+    background-color: green;
 `

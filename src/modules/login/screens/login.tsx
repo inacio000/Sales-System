@@ -1,7 +1,7 @@
 import { View, Text, TextInput } from "react-native"
 import { ContainerLogin } from "../styles/login.style";
-import Input from "../../../shared/components/input/input";
-import Button from "../../../shared/components/button/Button";
+import Input from "../../../shared/components/Input/input";
+import Button from "../../../shared/components/Button/Button";
 
 
 const Login = () => {
