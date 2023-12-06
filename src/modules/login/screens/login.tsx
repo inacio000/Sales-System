@@ -3,7 +3,7 @@ import { ContainerLogin } from "../styles/login.style";
 import Input from "../../../shared/components/Input/input";
 import Button from "../../../shared/components/Button/Button";
 import Text from "../../../shared/components/Text/Text";
-import { textType } from "../../../shared/components/Text/TextType";
+import { textTypes } from "../../../shared/components/Text/TextTypes";
 import { theme } from "../../../shared/Theme/Theme";
 
 
@@ -16,9 +16,14 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>
-                <Text type={textType.TITLE_BOLD}>Login</Text>
+                <Text type={textTypes.TITLE_BOLD}>Login</Text>
                 <Input />
-                <Button type={theme.buttons.buttonsTheme.primary} margin="8px" onPress={handleOnPress} title="Login" />
+                <Button 
+                    type={theme.buttons.buttonsTheme.primary} 
+                    margin="16px" 
+                    title="Login"
+                    onPress={handleOnPress} 
+                />
             </ContainerLogin>
         </View>
     );

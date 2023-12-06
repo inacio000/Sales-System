@@ -1,6 +1,6 @@
 import { TextProps as TextPropsNative } from 'react-native/types';
 import { ContainerText } from './Text.style';
-import { textType } from './TextType';
+import { textTypes } from './TextTypes';
 import { useMemo } from 'react';
 
 interface TextProps extends TextPropsNative {
@@ -11,29 +11,29 @@ interface TextProps extends TextPropsNative {
 const Text = ({ color, type, ...props }: TextProps) => {
   const fontSize = useMemo(() => {
     switch (type) {
-      case textType.TITLE_BOLD:
-      case textType.TITLE_REGULAR:
-      case textType.TITLE_LIGHT:
+      case textTypes.TITLE_BOLD:
+      case textTypes.TITLE_REGULAR:
+      case textTypes.TITLE_LIGHT:
         return '24px';
 
-      case textType.SUB_TITLE_BOLD:
-      case textType.SUB_TITLE_REGULAR:
-      case textType.SUB_TITLE_LIGHT:
+      case textTypes.SUB_TITLE_BOLD:
+      case textTypes.SUB_TITLE_REGULAR:
+      case textTypes.SUB_TITLE_LIGHT:
         return '20px';
 
-      case textType.BUTTON_BOLD:
-      case textType.BUTTON_REGULAR:
-      case textType.BUTTON_LIGHT:
+      case textTypes.BUTTON_BOLD:
+      case textTypes.BUTTON_REGULAR:
+      case textTypes.BUTTON_LIGHT:
         return '18px';
 
-      case textType.PARAGRAPH_SMALL_BOLD:
-      case textType.PARAGRAPH_SMALL_REGULAR:
-      case textType.PARAGRAPH_SMALL_LIGHT:
+      case textTypes.PARAGRAPH_SMALL_BOLD:
+      case textTypes.PARAGRAPH_SMALL_REGULAR:
+      case textTypes.PARAGRAPH_SMALL_LIGHT:
         return '10px';
 
-      case textType.PARAGRAPH_BOLD:
-      case textType.PARAGRAPH_LIGHT:
-      case textType.PARAGRAPH_REGULAR:
+      case textTypes.PARAGRAPH_BOLD:
+      case textTypes.PARAGRAPH_LIGHT:
+      case textTypes.PARAGRAPH_REGULAR:
       default:
         return '14px';
 
@@ -42,25 +42,25 @@ const Text = ({ color, type, ...props }: TextProps) => {
 
   const fontFamily = useMemo(() => {
     switch (type) {
-      case textType.TITLE_BOLD:
-      case textType.SUB_TITLE_BOLD:
-      case textType.PARAGRAPH_SMALL_BOLD:
-      case textType.PARAGRAPH_BOLD:
-      case textType.BUTTON_BOLD:
+      case textTypes.TITLE_BOLD:
+      case textTypes.SUB_TITLE_BOLD:
+      case textTypes.PARAGRAPH_SMALL_BOLD:
+      case textTypes.PARAGRAPH_BOLD:
+      case textTypes.BUTTON_BOLD:
         return 'Poppins-Bold';
 
-      case textType.TITLE_LIGHT:
-      case textType.SUB_TITLE_LIGHT:
-      case textType.PARAGRAPH_SMALL_LIGHT:
-      case textType.PARAGRAPH_LIGHT:
-      case textType.BUTTON_LIGHT:
+      case textTypes.TITLE_LIGHT:
+      case textTypes.SUB_TITLE_LIGHT:
+      case textTypes.PARAGRAPH_SMALL_LIGHT:
+      case textTypes.PARAGRAPH_LIGHT:
+      case textTypes.BUTTON_LIGHT:
         return 'Poppins-Light';
 
-      case textType.TITLE_REGULAR:
-      case textType.SUB_TITLE_REGULAR:
-      case textType.PARAGRAPH_SMALL_REGULAR:
-      case textType.PARAGRAPH_REGULAR:
-      case textType.BUTTON_REGULAR:
+      case textTypes.TITLE_REGULAR:
+      case textTypes.SUB_TITLE_REGULAR:
+      case textTypes.PARAGRAPH_SMALL_REGULAR:
+      case textTypes.PARAGRAPH_REGULAR:
+      case textTypes.BUTTON_REGULAR:
         return 'Poppins-Regular'
 
 
