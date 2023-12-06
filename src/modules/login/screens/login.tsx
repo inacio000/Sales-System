@@ -17,7 +17,11 @@ const Login = () => {
         <View>
             <ContainerLogin>
                 <Text type={textTypes.TITLE_BOLD}>IMR</Text>
-                <Input placeholder="Enter your email" title="Email:"/>
+                <Input 
+                    
+                    placeholder="Enter your email" 
+                    title="Email:"
+                />
                 <Button 
                     type={theme.buttons.buttonsTheme.primary} 
                     margin="16px" 
