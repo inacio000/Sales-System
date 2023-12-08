@@ -5,6 +5,7 @@ import Button from "../../../shared/components/Button/Button";
 import Text from "../../../shared/components/Text/Text";
 import { textTypes } from "../../../shared/components/Text/TextTypes";
 import { theme } from "../../../shared/Theme/Theme";
+import { Icon } from "../../../shared/components/Icon/Icon";
 
 
 const Login = () => {
@@ -16,6 +17,7 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>
+                <Icon name="home" color={theme.colors.purpleTheme.purple80} size={24} />
                 <Text type={textTypes.TITLE_BOLD}>IMR</Text>
                 <Input 
                     
