@@ -19,16 +19,21 @@ const Login = () => {
             <ContainerLogin>
                 <Icon name="home" color={theme.colors.purpleTheme.purple80} size={24} />
                 <Text type={textTypes.TITLE_BOLD}>IMR</Text>
-                <Input 
-                    
-                    placeholder="Enter your email" 
+                <Input
+                    margin="0px 0px 8px 0px"
+                    placeholder="Enter your email"
                     title="Email:"
                 />
-                <Button 
-                    type={theme.buttons.buttonsTheme.primary} 
-                    margin="16px" 
+                <Input
+                    secureTextEntry
+                    placeholder="Enter your password"
+                    title="Password:"
+                />
+                <Button
+                    type={theme.buttons.buttonsTheme.primary}
+                    margin="16px"
                     title="Login"
-                    onPress={handleOnPress} 
+                    onPress={handleOnPress}
                 />
             </ContainerLogin>
         </View>
