@@ -1,5 +1,5 @@
 import { View } from "react-native"
-import { ContainerLogin } from "../styles/login.style";
+import { ContainerLogin, Imagelogo } from "../styles/login.style";
 import Input from "../../../shared/components/Input/input";
 import Button from "../../../shared/components/Button/Button";
 import Text from "../../../shared/components/Text/Text";
@@ -17,8 +17,9 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>
-                <Icon name="home" color={theme.colors.purpleTheme.purple80} size={24} />
-                <Text type={textTypes.TITLE_BOLD}>IMR</Text>
+                <Imagelogo source={require('../../../assets/images/logo.png')} />
+                {/* <Icon name="home" color={theme.colors.purpleTheme.purple80} size={24} /> */}
+                {/* <Text type={textTypes.TITLE_BOLD}>IMR</Text> */}
                 <Input
                     margin="0px 0px 8px 0px"
                     placeholder="Enter your email"
