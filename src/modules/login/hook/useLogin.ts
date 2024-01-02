@@ -1,25 +1,18 @@
 import { useState } from 'react';
 import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
-import { connectionAPIPost } from '../../../shared/Functions/Conection/ConnectionAPI';
+import { userRequest } from '../../../shared/hooks/userRequest';
 
 export const useLogin = () => {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const { authRequest, errorMessage, loading, setErrorMessage} = userRequest();
+
 
   const handleOnPress = async () => {
-    setLoading(true);
-
-    await connectionAPIPost('https://31e0-89-109-45-48.ngrok-free.app/auth', {
-        email,
-        password,
-      })
-      .catch(() => {
-        setErrorMessage('User or Password incorrect');
-      });
-    setLoading(false);
-    console.log('Clicked...');
+    authRequest({
+      email,
+      password,
+    });
   };
 
   const handleOnChangeEmail = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
