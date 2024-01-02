@@ -1,18 +1,17 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+import { connectionAPIPost } from '../../../shared/Functions/Conection/ConnectionAPI';
 
 export const useLogin = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleOnPress = async () => {
     setLoading(true);
 
-    await axios
-      .post(' https://1ea6-89-109-45-48.ngrok-free.app/auth', {
+    await connectionAPIPost('https://31e0-89-109-45-48.ngrok-free.app/auth', {
         email,
         password,
       })
