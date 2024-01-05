@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { UserType } from '../../../shared/types/userType';
 
-interface userStore {
+interface UserStore {
     user?: UserType;
 }
 
-const initialState: any = {
+const initialState: UserStore = {
     user: undefined,
 }
 
@@ -14,7 +14,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUserAction: (state, action: PayloadAction<UserType>) => {
-      state.user += action.payload
+      state.user = action.payload
     },
   },
 })
