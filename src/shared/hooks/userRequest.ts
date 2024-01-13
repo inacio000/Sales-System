@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { RequestLogin } from '../types/requestLogin';
-import { connectionAPIPost } from '../Functions/Conection/ConnectionAPI';
+import { connectionAPIPost } from '../Functions/Connection/ConnectionAPI';
 import { ReturnLogin } from '../types/returnLogin';
 import { userUseReducer } from '../../store/reducers/userReducer/useUserReducer';
 import { useGlobalReducer } from '../../store/reducers/globalReducer/useGlobalReducer';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 
 export const userRequest = () => {
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const { setModal } = useGlobalReducer();
   const { setUser } = userUseReducer();
   const [loading, setLoading] = useState<boolean>(false);
@@ -13,9 +15,10 @@ export const userRequest = () => {
 
   const authRequest = async (body: RequestLogin) => {
     setLoading(true);
-    await connectionAPIPost<ReturnLogin>('https://f170-89-109-45-138.ngrok-free.app/auth', body)
+    await connectionAPIPost<ReturnLogin>('https://3d6d-89-109-46-198.ngrok-free.app/auth', body)
       .then((result) => {
         setUser(result.user);
+        navigate('Home');
       })
       .catch(() => {
         setModal({

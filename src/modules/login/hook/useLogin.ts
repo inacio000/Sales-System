@@ -5,8 +5,8 @@ import { userUseReducer } from '../../../store/reducers/userReducer/useUserReduc
 
 export const useLogin = () => {
   const { user } = userUseReducer();
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const { authRequest, errorMessage, loading, setErrorMessage} = userRequest();
 
   console.log('User:', user)
