@@ -7,7 +7,7 @@ import { useGlobalReducer } from '../../store/reducers/globalReducer/useGlobalRe
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 
 export const userRequest = () => {
-  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
+  const { reset } = useNavigation<NavigationProp<ParamListBase>>();
   const { setModal } = useGlobalReducer();
   const { setUser } = userUseReducer();
   const [loading, setLoading] = useState<boolean>(false);
@@ -15,10 +15,13 @@ export const userRequest = () => {
 
   const authRequest = async (body: RequestLogin) => {
     setLoading(true);
-    await connectionAPIPost<ReturnLogin>('https://3d6d-89-109-46-198.ngrok-free.app/auth', body)
+    await connectionAPIPost<ReturnLogin>('https://caa8-95-37-1-48.ngrok-free.app/auth', body)
       .then((result) => {
         setUser(result.user);
-        navigate('Home');
+        reset({
+          index: 0,
+          routes: [{ name: 'Home'}],
+        });
       })
       .catch(() => {
         setModal({
