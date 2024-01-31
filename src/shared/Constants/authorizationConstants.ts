@@ -1,1 +1,1 @@
-export const AUTHORIZATION_KEY = '@sells_AUTHORIZATION_KEY';
+export const AUTHORIZATION_KEY = '@vendas_AUTHORIZATION_KEY';

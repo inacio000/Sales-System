@@ -9,7 +9,7 @@ export const useLogin = () => {
   const [password, setPassword] = useState<string>('');
   const { authRequest, errorMessage, loading, setErrorMessage} = userRequest();
 
-  console.log('User:', user)
+  // console.log('User:', user)
 
   const handleOnPress = async () => {
     authRequest({

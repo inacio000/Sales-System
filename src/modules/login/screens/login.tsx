@@ -5,9 +5,11 @@ import Button from "../../../shared/components/Button/Button";
 import { theme } from "../../../shared/Theme/Theme";
 import { useLogin } from "../hook/useLogin";
 import { useEffect } from "react";
-import { getAuthorizationToken } from "../../../shared/Functions/Connection/auth";
 import { useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { connectionAPIGet } from "../../../shared/Functions/Connection/ConnectionAPI";
+import { URL_USER } from "../../../shared/Constants/urls";
+import { UserType } from "../../../shared/types/userType";
 
 const Login = () => {
 
@@ -25,10 +27,12 @@ const Login = () => {
 
     // useEffect(() => {
     //     const test = async () => {
-    //         const token = await getAuthorizationToken();
-    //         if (token) {
+    //         const resultBack = await connectionAPIGet<UserType>(URL_USER).catch(() => undefined);
+    //         console.log(resultBack)
+
+    //         if(resultBack) {
     //             navigation.navigate(MenuUrl.HOME)
-    //         };
+    //         }
     //     };
 
     //     test();
