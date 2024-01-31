@@ -4,8 +4,14 @@ import Input from "../../../shared/components/Input/input";
 import Button from "../../../shared/components/Button/Button";
 import { theme } from "../../../shared/Theme/Theme";
 import { useLogin } from "../hook/useLogin";
+import { useEffect } from "react";
+import { getAuthorizationToken } from "../../../shared/Functions/Connection/auth";
+import { useNavigation } from "@react-navigation/native";
+import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 
 const Login = () => {
+
+    // const navigation = useNavigation();
 
     const {
         email,
@@ -16,6 +22,17 @@ const Login = () => {
         handleOnChangeEmail,
         handleOnChangePassword,
     } = useLogin();
+
+    // useEffect(() => {
+    //     const test = async () => {
+    //         const token = await getAuthorizationToken();
+    //         if (token) {
+    //             navigation.navigate(MenuUrl.HOME)
+    //         };
+    //     };
+
+    //     test();
+    // }, []);
 
     return (
         <View>

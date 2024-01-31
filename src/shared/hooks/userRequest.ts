@@ -5,6 +5,7 @@ import { ReturnLogin } from '../types/returnLogin';
 import { userUseReducer } from '../../store/reducers/userReducer/useUserReducer';
 import { useGlobalReducer } from '../../store/reducers/globalReducer/useGlobalReducer';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { setAuthorizationToken } from '../Functions/Connection/auth';
 
 export const userRequest = () => {
   const { reset } = useNavigation<NavigationProp<ParamListBase>>();
@@ -15,8 +16,10 @@ export const userRequest = () => {
 
   const authRequest = async (body: RequestLogin) => {
     setLoading(true);
-    await connectionAPIPost<ReturnLogin>('https://caa8-95-37-1-48.ngrok-free.app/auth', body)
+    await connectionAPIPost<ReturnLogin>('https://5d5b-89-109-44-172.ngrok-free.app/auth', body)
       .then((result) => {
+        setAuthorizationToken(result.accessToken);
+
         setUser(result.user);
         reset({
           index: 0,
