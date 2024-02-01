@@ -13,15 +13,15 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
-            name={MenuUrl.LOGIN}
-            component={Login}
-            options={{headerShown: true}}
-          /> */}
         <Stack.Screen
           name={MenuUrl.SPLASH}
           component={Splash}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={MenuUrl.LOGIN}
+          component={Login}
+          options={{ headerShown: true }}
         />
         <Stack.Screen name={MenuUrl.HOME} component={Home} />
       </Stack.Navigator>
