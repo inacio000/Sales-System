@@ -8,7 +8,7 @@ import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { getAuthorizationToken } from "../../../shared/Functions/Connection/auth";
 
-const TIME_SLEEP = 5000
+const TIME_SLEEP = 3000
 
 const Splash = () => {
     const { reset } = useNavigation<NavigationProp<ParamListBase>>();

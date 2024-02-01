@@ -1,4 +1,4 @@
-import { View } from "react-native"
+import { TouchableOpacity, View } from "react-native"
 import { ContainerLogin, Imagelogo } from "../styles/login.style";
 import Input from "../../../shared/components/Input/input";
 import Button from "../../../shared/components/Button/Button";
@@ -10,6 +10,8 @@ import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { connectionAPIGet } from "../../../shared/Functions/Connection/ConnectionAPI";
 import { URL_USER } from "../../../shared/Constants/urls";
 import { UserType } from "../../../shared/types/userType";
+import Text from "../../../shared/components/Text/Text";
+import { textTypes } from "../../../shared/components/Text/TextTypes";
 
 const Login = () => {
 
@@ -23,6 +25,7 @@ const Login = () => {
         handleOnPress,
         handleOnChangeEmail,
         handleOnChangePassword,
+        handleGoToCreateUser,
     } = useLogin();
 
     // useEffect(() => {
@@ -58,9 +61,11 @@ const Login = () => {
                     errorMessage={errorMessage}
                     onChange={handleOnChangePassword}
                 />
+                <TouchableOpacity onPress={handleGoToCreateUser}>
+                    <Text margin="16px" type={textTypes.PARAGRAPH_SEMI_BOLD} color={theme.colors.mainTheme.primary}>Sign Up</Text>
+                </TouchableOpacity>
                 <Button
                     type={theme.buttons.buttonsTheme.primary}
-                    margin="16px"
                     title="Login"
                     onPress={handleOnPress}
                     loading={loading}
