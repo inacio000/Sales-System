@@ -1,1 +1,1 @@
-export const URL_USER = 'https://5d5b-89-109-44-172.ngrok-free.app/user';
+export const URL_USER = 'https://3bad-89-109-44-172.ngrok-free.app/user';
