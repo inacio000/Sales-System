@@ -20,6 +20,7 @@ const Login = () => {
     const {
         email,
         password,
+        disabled,
         loading,
         errorMessage,
         handleOnPress,
@@ -69,6 +70,7 @@ const Login = () => {
                     title="Login"
                     onPress={handleOnPress}
                     loading={loading}
+                    disabled={disabled}
                 />
             </ContainerLogin>
         </View>

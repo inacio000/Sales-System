@@ -4,7 +4,7 @@ import { CreateUserContainer } from "../styles/createUser.style";
 import { useCreateUser } from "../hook/useCreateUser";
 
 const CreateUser = () => {
-    const {createUser, handleOnChangeInput, handleCreateUser, loading } = useCreateUser();
+    const {createUser, handleOnChangeInput, handleCreateUser, loading, disable } = useCreateUser();
 
     return (
         <CreateUserContainer>
@@ -55,6 +55,7 @@ const CreateUser = () => {
                 title="Create User"
                 onPress={handleCreateUser}
                 loading={loading}
+                disabled={disable}
             />
         </CreateUserContainer>
     )

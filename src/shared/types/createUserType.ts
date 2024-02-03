@@ -1,8 +1,8 @@
 export interface CreateUserType {
     name: string;
-    email: string;
     phone: string;
+    email: string;
     cpf: string;
     password: string;
-    confirmPassword?: string;
+    confirmPassword: string;
 }

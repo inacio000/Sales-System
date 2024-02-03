@@ -13,6 +13,7 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
+      
       <Stack.Navigator>
         <Stack.Screen
           name={MenuUrl.SPLASH}
@@ -33,7 +34,6 @@ const Navigation = () => {
           component={CreateUser}
           options={{ headerShown: true, title: 'Create User' }}
         />
-
 
       </Stack.Navigator>
     </NavigationContainer>

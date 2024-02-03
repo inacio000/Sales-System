@@ -62,7 +62,7 @@ export const useRequest = () => {
 
   const authRequest = async (body: RequestLogin) => {
     setLoading(true);
-    await connectionAPIPost<ReturnLogin>('https://3bad-89-109-44-172.ngrok-free.app/auth', body)
+    await connectionAPIPost<ReturnLogin>('https://a1fe-89-109-49-23.ngrok-free.app/auth', body)
       .then((result) => {
         setAuthorizationToken(result.accessToken);
 
