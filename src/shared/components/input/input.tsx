@@ -1,10 +1,10 @@
-import { NativeSyntheticEvent, TextInputChangeEventData, TextInputProps, View } from "react-native";
+import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, TextInputProps, View } from "react-native";
 import { ContainerInput, IconEye } from "./input.style";
 import { DisplayFlexColumn } from "../globalStyles/globalViews.style";
 import Text from "../Text/Text";
 import { textTypes } from "../Text/TextTypes";
 import { theme } from "../../Theme/Theme";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { insertMaskInCpf } from "../../Functions/cpfMask";
 import { insertMaskInPhone } from "../../Functions/phoneMask";
 
@@ -16,7 +16,8 @@ interface InputProps extends TextInputProps {
     type?: 'cell-phone' | 'cpf';
 }
 
-const Input = ({ margin, secureTextEntry, errorMessage, title, type, onChange, ...props }: InputProps) => {
+const Input = forwardRef<TextInput, InputProps>(
+    ({ margin, secureTextEntry, errorMessage, title, type, onChange, ...props }: InputProps, ref) => {
     const [currentSecure, setCurrentSecure] = useState<boolean>(!!secureTextEntry)
 
 
@@ -67,6 +68,7 @@ const Input = ({ margin, secureTextEntry, errorMessage, title, type, onChange, .
                     secureTextEntry={currentSecure} 
                     isError={!!errorMessage} 
                     onChange={handleOnChange}
+                    ref={ref}
                 />
                     {secureTextEntry && <IconEye onPress={handleOnPressEye} name={currentSecure ? "eye" : "eye-blocked"} size={20} />}
             </View>
@@ -81,6 +83,6 @@ const Input = ({ margin, secureTextEntry, errorMessage, title, type, onChange, .
             )}
         </DisplayFlexColumn>
     )
-}
+})
 
 export default Input;
