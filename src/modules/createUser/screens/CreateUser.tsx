@@ -44,6 +44,7 @@ const CreateUser = () => {
                 margin="0px 0px 16px 0px" 
                 placeholder="Insert" 
                 title="Password:"
+                secureTextEntry
             />
             <Input 
                 onChange={(event) => handleOnChangeInput(event, 'confirmPassword')}
@@ -51,6 +52,7 @@ const CreateUser = () => {
                 margin="0px 0px 16px 0px" 
                 placeholder="Insert" 
                 title="Confirm Password:"
+                secureTextEntry
             />
             <Button 
                 margin="0px 0px 32px 0px" 

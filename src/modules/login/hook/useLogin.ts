@@ -4,6 +4,7 @@ import { useRequest } from '../../../shared/hooks/userRequest';
 import { userUseReducer } from '../../../store/reducers/userReducer/useUserReducer';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { MenuUrl } from '../../../shared/enums/MenuUrl.enum';
+import { validateEmail } from '../../../shared/Functions/email';
 
 export const useLogin = () => {
   const { user } = userUseReducer();
@@ -17,7 +18,7 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (
-      email != '' &&
+      validateEmail(email) &&
       password != ''
     ) {
       setDisable(false);

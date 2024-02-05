@@ -9,6 +9,7 @@ import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { insertMaskInCpf, validateCpf } from "../../../shared/Functions/cpfMask";
 import { insertMaskInPhone, validatePhone } from "../../../shared/Functions/phoneMask";
 import { validateEmail } from "../../../shared/Functions/email";
+import { removeSpecialCharacters } from "../../../shared/Functions/characters";
 
 export const useCreateUser = () => {
     const { reset } = useNavigation<NavigationProp<ParamListBase>>();
@@ -42,7 +43,11 @@ export const useCreateUser = () => {
         const resultCreateUser = await request({
             url: URL_USER,
             method: MethodEnum.POST,
-            body: createUser,
+            body: {
+                ...createUser,
+                phone: removeSpecialCharacters(createUser.phone),
+                cpf: removeSpecialCharacters(createUser.cpf),
+            },
             message: 'User Created Successfully',
         });
 
