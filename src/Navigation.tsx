@@ -34,7 +34,7 @@ const TabNavigation = () => {
         break;
     }
 
-    return <Icon size={20} name={iconName} color={color} />;
+    return <Icon size={22} name={iconName} color={color} />;
   }
 
   return (
@@ -43,6 +43,12 @@ const TabNavigation = () => {
         tabBarIcon: ({ color }) => renderTabBarIcon(color, route),
         tabBarActiveTintColor: theme.colors.mainTheme.primary,
         tabBarInactiveTintColor: theme.colors.grayTheme.gray80,
+        tabBarLabelStyle: {
+          marginBottom: 8,
+        },
+        tabBarStyle: {
+          height: 52,
+        }
       })}
     >
       <Tab.Screen 
