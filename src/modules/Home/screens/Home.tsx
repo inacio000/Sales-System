@@ -22,8 +22,8 @@ const Home = () => {
     return (
         <View>
             <Text>Home Page</Text>
-            {products.map((product) => (
-                <Text>{product.name}</Text>
+            {products.map((product, key) => (
+                <Text key={key}>{product.name}</Text>
             ))}
         </View>
     )

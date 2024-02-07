@@ -1,3 +1,3 @@
-import Orders from "./screens/orders";
+import Orders from "./screens/Orders";
 
 export default Orders;
