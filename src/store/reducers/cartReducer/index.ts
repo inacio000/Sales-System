@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { CartType } from '../../../shared/types/CartType';
+import { CartType } from '../../../shared/types/cartType';
 
 interface CartStore {
   cart?: CartType;

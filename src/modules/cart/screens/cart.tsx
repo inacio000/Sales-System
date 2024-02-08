@@ -4,7 +4,7 @@ import { useCartReducer } from "../../../store/reducers/cartReducer/useCartReduc
 import { useRequest } from "../../../shared/hooks/userRequest";
 import { URL_CART } from "../../../shared/Constants/urls";
 import { MethodEnum } from "../../../shared/enums/methods.enum";
-import { CartType } from "../../../shared/types/CartType";
+import { CartType } from "../../../shared/types/cartType";
 
 const Cart = () => {
     const { request } = useRequest();
