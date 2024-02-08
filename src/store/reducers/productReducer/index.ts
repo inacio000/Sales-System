@@ -11,7 +11,7 @@ const initialState: ProductStore = {
 }
 
 export const productSlice = createSlice({
-  name: 'userReducer',
+  name: 'productReducer',
   initialState,
   reducers: {
     setProductsAction: (state, action: PayloadAction<ProductType[]>) => {
