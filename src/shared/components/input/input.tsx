@@ -1,4 +1,10 @@
-import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, TextInputProps, View } from "react-native";
+import { 
+    NativeSyntheticEvent, 
+    TextInput, 
+    TextInputChangeEventData, 
+    TextInputProps, 
+    View 
+} from "react-native";
 import { ContainerInput, IconEye, IconSearch } from "./input.style";
 import { DisplayFlexColumn } from "../globalStyles/globalViews.style";
 import Text from "../Text/Text";
@@ -73,13 +79,13 @@ const Input = forwardRef<TextInput, InputProps>(
                         ref={ref}
                     />
                     {secureTextEntry && <IconEye onPress={handleOnPressEye} name={currentSecure ? "eye" : "eye-blocked"} size={20} />}
-                    {iconRight && (
+                    {iconRight && 
                         <IconSearch 
                             name="search" 
                             onPress={onPressIconRight}
                             size={16}
                         />
-                    )}
+                    }
                 </View>
                 {errorMessage && (
                     <Text

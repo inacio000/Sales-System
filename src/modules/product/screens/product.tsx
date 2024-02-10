@@ -13,7 +13,6 @@ const Product = () => {
     const { params } = useRoute<RouteProp<Record<string, ProductsParams>>>();
     const { product } = params;
 
-    console.log('', params)
     return <Text>{product.name}</Text>
 }
 
