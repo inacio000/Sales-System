@@ -9,8 +9,8 @@ interface ContainerInputProps {
 
 export const ContainerInput = styled.TextInput<ContainerInputProps>`
     width: 100%;
-    height: 48px;
-    padding: 16px;
+    height: 40px;
+    padding: 8px 16px;
     background-color: ${theme.colors.neutralTheme.white};
     border-radius: 8px;
     color: ${theme.colors.neutralTheme.black};
@@ -24,5 +24,11 @@ export const ContainerInput = styled.TextInput<ContainerInputProps>`
 export const IconEye = styled(Icon)`
     position: absolute;
     right: 16px;
-    top: 12px;
+    top: 10px;
+`;
+
+export const IconSearch = styled(Icon)`
+    position: absolute;
+    right: 16px;
+    top: 16px;
 `
