@@ -1,5 +1,5 @@
 import Text from "../../../shared/components/Text/Text";
-import { FlatList, TouchableOpacity, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { useProductReducer } from "../../../store/reducers/productReducer/useProductReducer";
 import { useEffect } from "react";
 import { useRequest } from "../../../shared/hooks/userRequest";

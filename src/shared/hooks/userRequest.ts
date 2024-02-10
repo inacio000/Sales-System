@@ -17,23 +17,23 @@ export const useRequest = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  interface RequestProps<T> {
+  interface RequestProps<T, B = unknown> {
     url: string;
     method: MethodType;
     saveGlobal?: (object: T) => void;
-    body?: unknown;
+    body?: B;
     message?: string;
   }
 
-  const request = async <T>({
+  const request = async <T, B = unknown>({
     url,
     method,
     saveGlobal,
     body,
     message,
-  }: RequestProps<T>): Promise<T | undefined> => {
+  }: RequestProps<T | undefined, B>): Promise<T | undefined> => {
     setLoading(true);
-    const requestObject: T | undefined = await ConnectionAPI.connect<T>(url, method, body)
+    const returnObject: T | undefined = await ConnectionAPI.connect<T, B>(url, method, body)
       .then((result) => {
         if (saveGlobal) {
           saveGlobal(result);
@@ -57,12 +57,12 @@ export const useRequest = () => {
       });
 
     setLoading(false);
-    return requestObject;
+    return returnObject;
   };
 
   const authRequest = async (body: RequestLogin) => {
     setLoading(true);
-    await connectionAPIPost<ReturnLogin>('https://66ed-89-109-49-195.ngrok-free.app/auth', body)
+    await connectionAPIPost<ReturnLogin>('https://7cbf-89-109-47-165.ngrok-free.app/auth', body)
       .then((result) => {
         setAuthorizationToken(result.accessToken);
 
