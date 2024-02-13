@@ -1,8 +1,7 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
-import Text from "../../../shared/components/Text/Text"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
-import { NativeSyntheticEvent, ScrollView, TextInputChangeEventData, View } from "react-native";
+import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, TextInputChangeEventData, View } from "react-native";
 import { useRequest } from "../../../shared/hooks/userRequest";
 import { URL_PRODUCT_PAGE } from "../../../shared/Constants/urls";
 import { MethodEnum } from "../../../shared/enums/methods.enum";
@@ -11,6 +10,8 @@ import { PaginationType } from "../../../shared/types/paginationType";
 import { ProductType } from "../../../shared/types/productType";
 import Input from "../../../shared/components/Input/input";
 import ProductThumbnail from "../../../shared/productThumbnail/productThumbnail";
+import { ActiveIndicatorButton } from "../../../shared/components/Button/Button.style";
+import { theme } from "../../../shared/Theme/Theme";
 
 export type SearchProductNavigationProp = NativeStackNavigationProp<Record<string, SearchParams>>;
 
@@ -20,50 +21,72 @@ export interface SearchParams {
 }
 
 const SearchProduct = () => {
-    const { searchProducts, setSearchProducts } =useProductReducer();
+    const { searchProducts, setSearchProducts, insertSearchProduct } = useProductReducer();
     const { params } = useRoute<RouteProp<Record<string, SearchParams>>>();
-    const [ value, setValue ] = useState(params?.search || '');
-    const { request } = useRequest();
+    const { request, loading } = useRequest();
+    const [value, setValue] = useState(params?.search || '');
 
     useEffect(() => {
         setValue(params?.search || '')
     }, [params])
 
     useEffect(() => {
-        if (value) {
-            request<PaginationType<ProductType[]>>({
-                url: `${URL_PRODUCT_PAGE}?search=${value}`,
-                method: MethodEnum.GET,
-                saveGlobal: setSearchProducts
-            })
-        }
+        setSearchProducts(undefined);
+        request<PaginationType<ProductType[]>>({
+            url: `${URL_PRODUCT_PAGE}?search=${value}`,
+            method: MethodEnum.GET,
+            saveGlobal: setSearchProducts,
+        })
     }, [value])
 
-    console.log(searchProducts)
+    const findNewProductPage = () => {
+        if (searchProducts &&
+            searchProducts.meta.currentPage <
+            searchProducts.meta.totalPages
+        ) {
+
+            request<PaginationType<ProductType[]>>({
+                url: `${URL_PRODUCT_PAGE}?search=${value}&page=${searchProducts.meta.currentPage + 1}`,
+                method: MethodEnum.GET,
+                saveGlobal: insertSearchProduct
+            })
+        }
+    }
 
     const handleOnChangeInput = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
-        setValue(event.nativeEvent.text)
+        setValue(event.nativeEvent.text);
+    };
+
+    const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        const { contentOffset, layoutMeasurement, contentSize } = event.nativeEvent;
+        const isEndScroll = contentOffset.y >= (contentSize.height - layoutMeasurement.height);
+
+        if (isEndScroll && !loading) {
+            findNewProductPage();
+        }
     }
 
     return (
-        <View>
-            <Input 
-                value={value} 
+        <>
+            <Input
+                value={value}
                 iconRight
                 onChange={handleOnChangeInput}
             />
             {searchProducts && searchProducts.data && (
-                <ScrollView>
-                    {searchProducts.data.map((product, key) => 
-                        <ProductThumbnail 
+                <ScrollView onScroll={handleScroll}>
+                    {searchProducts.data.map((product, key) =>
+                        <ProductThumbnail
                             product={product}
                             key={key}
                         />
                     )}
                 </ScrollView>
             )}
-            <Text>Anything</Text>
-        </View>
+            {loading && (
+                <ActiveIndicatorButton color={theme.colors.mainTheme.primary} />
+            )}
+        </>
     );
 };
 
