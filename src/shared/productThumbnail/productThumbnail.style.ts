@@ -6,7 +6,7 @@ interface ContainerProps {
 }
 
 export const ProductThumbnailContainer = styled.TouchableOpacity<ContainerProps>`
-    width: 120px;
+    width: 160px;
     height: 175px;
     padding: 4px;
     border-radius: 4px;
@@ -24,7 +24,7 @@ export const ProductImage = styled.Image`
 `;
 
 export const ProductInsertCart = styled.TouchableOpacity`
-    width: 118px;
+    width: 158px;
     height: 20px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;

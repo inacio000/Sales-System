@@ -12,6 +12,7 @@ import Input from "../../../shared/components/Input/input";
 import ProductThumbnail from "../../../shared/productThumbnail/productThumbnail";
 import { ActiveIndicatorButton } from "../../../shared/components/Button/Button.style";
 import { theme } from "../../../shared/Theme/Theme";
+import { SearchProductContainer, SearchProductScrollView } from "../styles/searchProduct.style";
 
 export type SearchProductNavigationProp = NativeStackNavigationProp<Record<string, SearchParams>>;
 
@@ -63,11 +64,12 @@ const SearchProduct = () => {
 
         if (isEndScroll && !loading) {
             findNewProductPage();
+            console.log('Final screen')
         }
     }
 
     return (
-        <>
+        <SearchProductContainer>
             <Input
                 value={value}
                 iconRight
@@ -75,18 +77,21 @@ const SearchProduct = () => {
             />
             {searchProducts && searchProducts.data && (
                 <ScrollView onScroll={handleScroll}>
-                    {searchProducts.data.map((product, key) =>
-                        <ProductThumbnail
-                            product={product}
-                            key={key}
-                        />
-                    )}
+                    <SearchProductScrollView>
+                        {searchProducts.data.map((product, key) =>
+                            <ProductThumbnail
+                                margin="4px 0px"
+                                product={product}
+                                key={key}
+                            />
+                        )}
+                    </SearchProductScrollView>
                 </ScrollView>
             )}
             {loading && (
                 <ActiveIndicatorButton color={theme.colors.mainTheme.primary} />
             )}
-        </>
+        </SearchProductContainer>
     );
 };
 
