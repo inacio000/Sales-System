@@ -4,6 +4,7 @@
 
 # Xcode
 #
+covarage/
 build/
 *.pbxuser
 !default.pbxuser
